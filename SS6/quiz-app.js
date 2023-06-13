@@ -44,19 +44,14 @@ const myQuestions = [
 ];
 
 const title = document.createElement("p");
-title.innerHTML = "<h1>Quiz App</h1>";
-
-let score = 0;
-let currentQuestionIndex = 0;
-
 const quizContainer = document.createElement("div");
 const btnContainer = document.createElement("div");
-
 const nextBtn = document.createElement("input");
+const prevBtn = document.createElement("input");
+
+title.innerHTML = "<h1>Quiz App</h1>";
 nextBtn.type = "button";
 nextBtn.value = "Next";
-
-const prevBtn = document.createElement("input");
 prevBtn.type = "button";
 prevBtn.value = "Previous";
 
@@ -65,6 +60,9 @@ btnContainer.append(nextBtn, prevBtn);
 
 btnContainer.style.display = "flex";
 btnContainer.style.gap = "0.5rem";
+
+let score = 0;
+let currentQuestionIndex = 0;
 
 function checkAnswer(index, selectedValue) {
   if (selectedValue === myQuestions[index].correctAnswer) {
