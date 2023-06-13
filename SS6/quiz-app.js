@@ -45,50 +45,107 @@ const myQuestions = [
 
 const title = document.createElement("p");
 title.innerHTML = "<h1>Quiz App</h1>";
-document.body.appendChild(title);
 
 let score = 0;
+let currentQuestionIndex = 0;
 
-function checkAnswer(index, selected) {
-  if (selected === myQuestions[index].correctAnswer) {
-    console.log("co diem r");
+const quizContainer = document.createElement("div");
+const btnContainer = document.createElement("div");
+
+const nextBtn = document.createElement("input");
+nextBtn.type = "button";
+nextBtn.value = "Next";
+
+const prevBtn = document.createElement("input");
+prevBtn.type = "button";
+prevBtn.value = "Previous";
+
+document.body.append(title, quizContainer, btnContainer);
+btnContainer.append(nextBtn, prevBtn);
+
+btnContainer.style.display = "flex";
+btnContainer.style.gap = "0.5rem";
+
+function checkAnswer(index, selectedValue) {
+  if (selectedValue === myQuestions[index].correctAnswer) {
+    score++;
+  } else {
+    if (score > 0) score--;
   }
 }
 
-myQuestions.forEach(function (data, index) {
+const userAnswers = new Array(myQuestions.length);
+
+function onAnswerSelected(index, value) {
+  userAnswers[index] = value;
+}
+
+function showQuestion(index) {
+  const data = myQuestions[index];
   const questionHTML = `
   <h3>Câu ${index + 1}: ${data.question}</h3>
   <p>
-    <input type="radio" name="question${index}" value="a" /> ${
-    data.answers.a
-  }<br />
-    <input type="radio" name="question${index}" value="b" /> ${
-    data.answers.b
-  }<br />
-    <input type="radio" name="question${index}" value="c" /> ${
-    data.answers.c
-  }<br />
-    <input type="radio" name="question${index}" value="d" /> ${
-    data.answers.d
-  }<br />
+    <input type="radio" name="question${index}" value="a" ${
+    userAnswers[index] === "a" ? "checked" : ""
+  } onclick="onAnswerSelected(${index}, 'a')" /> ${data.answers.a}<br />
+    <input type="radio" name="question${index}" value="b" ${
+    userAnswers[index] === "b" ? "checked" : ""
+  } onclick="onAnswerSelected(${index}, 'b')" /> ${data.answers.b}<br />
+    <input type="radio" name="question${index}" value="c" ${
+    userAnswers[index] === "c" ? "checked" : ""
+  } onclick="onAnswerSelected(${index}, 'c')" /> ${data.answers.c}<br />
+    <input type="radio" name="question${index}" value="d" ${
+    userAnswers[index] === "d" ? "checked" : ""
+  } onclick="onAnswerSelected(${index}, 'd')" /> ${data.answers.d}<br />
   </p>
 `;
+
+  quizContainer.innerHTML = questionHTML;
 
   const radios = document.getElementsByName(`question${index}`);
   radios.forEach(function (radio) {
     radio.addEventListener("click", function () {
-      console.log(radio);
       checkAnswer(index, radio.value);
     });
   });
 
-  document.body.insertAdjacentHTML("beforeend", questionHTML);
+  if (index === myQuestions.length - 1) {
+    nextBtn.style.display = "none";
+    prevBtn.style.display = "none";
+    submitBtn.style.display = "block";
+  } else {
+    nextBtn.style.display = "block";
+    prevBtn.style.display = "block";
+    submitBtn.style.display = "none";
+  }
+}
+
+nextBtn.addEventListener("click", function () {
+  currentQuestionIndex++;
+  if (currentQuestionIndex >= myQuestions.length) {
+    currentQuestionIndex = 0;
+  }
+  showQuestion(currentQuestionIndex);
 });
 
-const nopBai = document.createElement("input");
-nopBai.type = "button";
-nopBai.value = "Nộp bài";
-nopBai.addEventListener("click", function () {
-  alert("Total points you have received: " + score);
+prevBtn.addEventListener("click", function () {
+  currentQuestionIndex--;
+  if (currentQuestionIndex < 0) {
+    alert("Bug!");
+  }
+  showQuestion(currentQuestionIndex);
 });
-document.body.appendChild(nopBai);
+
+const submitBtn = document.createElement("input");
+submitBtn.type = "button";
+submitBtn.value = "Submit";
+submitBtn.style.display = "none";
+
+submitBtn.addEventListener("click", function () {
+  alert("Total points you have received: " + score);
+  showQuestion(0);
+});
+
+btnContainer.append(submitBtn);
+
+showQuestion(currentQuestionIndex);
