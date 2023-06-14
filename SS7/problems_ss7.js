@@ -97,7 +97,7 @@ const users = [
 // Solution 1:
 const displayAdmin_1 = (users) => {
   const admin = users.filter((user) => user.admin === true);
-  admin.forEach((admin) => console.log("filter + forEach", admin.id));
+  admin.forEach((admin) => console.log("filter + forEach: ", admin.id));
 };
 const t5 = performance.now();
 displayAdmin_1(users);
