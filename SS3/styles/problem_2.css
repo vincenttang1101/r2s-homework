@@ -1,0 +1,15 @@
+.alert {
+  border: 2px solid gray;
+}
+
+.alert.stop {
+  background-color: red;
+}
+
+.go {
+  background-color: green;
+}
+
+#h2_title {
+  background-color: yellow;
+}

@@ -1,0 +1,30 @@
+a:link {
+  color: orange;
+}
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+span {
+  font-size: 150%;
+  color: red;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  width: 7rem;
+}
+
+tr:nth-child(even) {
+  color: white;
+  background-color: #333;
+}

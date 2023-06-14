@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+a[href*="https://"]
+{
+  border: 0.25rem solid green;
+  padding: 0.7rem 0.5rem;
+}
+
+a[title="link_2"] {
+  border: 0.25rem solid pink;
+  padding: 0.7rem 0.5rem;
+}
+
+a[href*="contact"] {
+  border: 0.25rem solid orange;
+  padding: 0.7rem 0.5rem;
+}
