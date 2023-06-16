@@ -1,0 +1,16 @@
+.alternate {
+  width: 40rem;
+  margin: 2rem;
+  padding: 4rem;
+  background-color: gray;
+}
+
+.box-1 {
+  height: 9rem;
+  border: 0.5rem solid #4b0082;
+}
+
+.box-2 {
+  height: 4rem;
+  border: 0.5rem solid #4b0082;
+}

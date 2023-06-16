@@ -1,0 +1,55 @@
+.box {
+  width: 20%;
+  border: 5px solid lightblue;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 40px;
+  position: relative;
+}
+
+.image-1 {
+  background-image: url("../star-svgrepo-com.svg");
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 2.5rem;
+  left: 0.5rem;
+}
+
+.image-2 {
+  background-image: url("../star-svgrepo-com.svg");
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+.image-3 {
+  background-image: url("../star-svgrepo-com.svg");
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 2.5rem;
+  right: 1rem;
+}
+
+.image-4 {
+  background-image: url("../star-svgrepo-com.svg");
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 4.5rem;
+  right: 1rem;
+}
+
+h1 {
+  text-align: center;
+}

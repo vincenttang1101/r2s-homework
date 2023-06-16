@@ -1,0 +1,11 @@
+div {
+  width: 20rem;
+  height: 30rem;
+  border: 0.5rem solid black;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20%;
+}
