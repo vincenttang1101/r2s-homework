@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import ComponentCon from "./ComponentCon";
 
 const FormInput = () => {
   const [name, setName] = useState(null);
+  const [text, setText] = useState("null");
+
   const handleShowName = (e) => {
     setName(e.target.value);
   };
@@ -45,6 +48,7 @@ const FormInput = () => {
       <input type="file" />
       <input type="submit" value="Gửi" />
       <input type="reset" value="Đặt lại" />
+      <ComponentCon text={text} />
     </>
   );
 };
